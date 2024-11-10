@@ -1,0 +1,98 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #8DA782;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between the title and button */
+    background-color: #3F4F38; /* Dark background for the header */
+    border-radius: 20px; /* Rounded corners for the header */
+    padding: 10px 20px;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+
+.heading {
+    font-size: 24px;
+    color: white;
+    margin: 0;
+    font-weight: bold;
+}
+
+.addButton {
+    background-color: #3F4F38;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 2px solid white; /* Optional: add a border for better visibility */
+}
+
+.taskList {
+    width: 100%;
+    max-width: 400px;
+    background-color: #eee9e6;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.taskItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.checkbox {
+    margin-right: 10px;
+}
+
+.taskDetails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.taskTitle {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+.taskDueDate, .taskPriority {
+    font-size: 14px;
+    color: #666;
+}
+
+.completed .taskTitle, .completed .taskDueDate, .completed .taskPriority {
+    color: #aaa;
+    text-decoration: line-through;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+    color: #b22222;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.deleteButton:hover {
+    color: #ff0000;
+}
