@@ -1,10 +1,10 @@
 import React from 'react';
-import HomePage from './Home/Home/HomePage';
+import LoginPage from './components/LoginPage';
 
 export default function Page() {
   return (
     <div>
-      <HomePage />
+      <LoginPage />
     </div>
   );
 }

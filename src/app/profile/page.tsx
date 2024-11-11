@@ -1,10 +1,10 @@
 import React from 'react';
-import HomePage from './Home/Home/HomePage';
+import ProfilePage from './components/ProfilePage';
 
 export default function Page() {
   return (
     <div>
-      <HomePage />
+      <ProfilePage />
     </div>
   );
 }
