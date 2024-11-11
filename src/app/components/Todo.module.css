@@ -11,9 +11,9 @@
 .headerContainer {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adds spacing between the title and button */
-    background-color: #3F4F38; /* Dark background for the header */
-    border-radius: 20px; /* Rounded corners for the header */
+    gap: 10px; 
+    background-color: #3F4F38; 
+    border-radius: 20px; 
     padding: 10px 20px;
     width: fit-content;
     margin-bottom: 20px;
@@ -95,4 +95,12 @@
 
 .deleteButton:hover {
     color: #ff0000;
+}
+
+.taskImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+    object-fit: cover;
 }

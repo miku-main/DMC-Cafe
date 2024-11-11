@@ -3,22 +3,24 @@ import * as React from 'react';
 import styles from './Form.module.css';
 
 interface FormProps {
-    onAddTask: (task: { title: string; dueDate: string; priority: number }) => void;
+    onAddTask: (task: { title: string; dueDate: string; priority: number; imageUrl: string }) => void;
 }
 
 function Form({ onAddTask }: FormProps) {
     const [title, setTitle] = React.useState<string>(""); // Initialize with empty string
     const [dueDate, setDueDate] = React.useState<string>(""); // Initialize with empty string
     const [priority, setPriority] = React.useState<number>(1); // Default priority is 1
+    const [imageUrl, setImageUrl] = React.useState<string>(""); // New state for image URL
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Check if title is not empty
         if (title.trim()) {
-            onAddTask({ title, dueDate, priority });
+            onAddTask({ title, dueDate, priority, imageUrl });
             setTitle(""); // Clear the title input
             setDueDate(""); // Clear the due date input
             setPriority(1); // Reset priority to default
+            setImageUrl(""); // Clear the image URL input
         } else {
             alert("Please enter a task title.");
         }
@@ -45,6 +47,16 @@ function Form({ onAddTask }: FormProps) {
                         className={styles.input}
                         value={dueDate || ""}
                         onChange={(e) => setDueDate(e.target.value)}
+                    />
+                </label>
+                <label className={styles.label}>
+                    Image URL
+                    <input
+                        type="text"
+                        className={styles.input}
+                        placeholder="Enter image URL"
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
                     />
                 </label>
                 <div className={styles.prioritySection}>

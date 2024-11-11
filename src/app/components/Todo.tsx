@@ -7,6 +7,7 @@ interface Task {
     dueDate: string;
     priority: number;
     completed: boolean;
+    imageUrl: string; // New property for image URL
 }
 
 interface TodoProps {
@@ -35,6 +36,9 @@ function Todo({ tasks, onToggleTask, onDeleteTask, onButtonClick }: TodoProps) {
                             onChange={() => onToggleTask(index)}
                             className={styles.checkbox}
                         />
+                        {task.imageUrl && (
+                            <img src={task.imageUrl} alt={task.title} className={styles.taskImage} />
+                        )}
                         <div className={styles.taskDetails}>
                             <span className={styles.taskTitle}>{task.title}</span>
                             {task.dueDate && (
