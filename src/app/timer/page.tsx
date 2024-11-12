@@ -1,12 +1,17 @@
 import React from 'react';
+import Timer from './components/Timer';
+import NavBar from '../Home/Home/NavBar';
+import styles from '../Home/Home/HomePage.module.css'
 
-const TimerPage: React.FC = () => {
+export default function Page() {
   return (
-    <div>
-      <h1>Timer Page</h1>
-      <p>This is a placeholder for the Timer Page.</p>
-    </div>
+    <>
+      <div className={styles.homePage}>
+        <NavBar />
+        <div>
+          <Timer />
+        </div>
+      </div>
+    </>
   );
-};
-
-export default TimerPage;
+}

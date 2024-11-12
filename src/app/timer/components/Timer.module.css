@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;;
+    background-color: #b2c1ac;
+    height: 100vh;
+}
+
+.timeDisplay {
+    background-color: #3f4f3881;
+    border-radius: 20px;
+    padding: 30px 60px;
+    margin-bottom: 80px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+}
+
+.timeDisplay h1 {
+    color: #fff;
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.timeSelectionCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3f4f3881;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.timeSelection {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeSelection button {
+    font-family: 'Jacques Francois', monospace;
+    background-color: #8c9b89;
+    color: #fff;
+    font-size: 1rem;
+    padding: 15px 30px;
+    margin: 10px 30px 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.timeSelection button:hover {
+    background-color: #6e7d73;
+}
+
+.controlcard {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 275px;
+
+}
+
+.control {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.control button {
+    font-family: 'Jacques Francois', monospace;
+    margin-left: 120px;
+    margin-right: 120px;
+    background-color: #e9e5e3;
+    color: #333;
+    font-size: 1rem;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease;
+}
+
+.control button:hover {
+    background-color: #c2b8ae; 
+}
