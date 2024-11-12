@@ -24,6 +24,9 @@ const NavBar: React.FC = () => {
     router.replace('/'); // Redirect to home page
     window.location.reload(); // Force reload to reset login state across components
   };
+  const handleCalenderClick = () => {
+    router.push('/calender');
+  }
 
   return (
     <nav className={styles.navBar}>
@@ -38,6 +41,9 @@ const NavBar: React.FC = () => {
       </button>
       <button onClick={handleLogoutClick} className={`${styles.navButton} ${styles.logoutButton}`}>
         <img src="/images/exit-icon.png" alt="Exit Icon" className={styles.navIcon} />
+      </button>
+      <button onClick={handleCalenderClick} className={styles.navButton}>
+        <img src="/images/calendar-icon.png" alt="Calender Icon" className={styles.navIcon} />
       </button>
     </nav>
   );
