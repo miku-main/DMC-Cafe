@@ -9,7 +9,7 @@ const HomeIcon: React.FC = () => {
 
   // Navigation functions
   const handleUserClick = () => {
-    router.push('/home'); 
+    router.push('/'); 
   };
 
   return (

@@ -1,4 +1,3 @@
-// src/components/profileCard.tsx
 "use client";
 
 import React, { useState } from 'react';
@@ -14,7 +13,12 @@ const LoginCard: React.FC = () => {
     // Here you can add authentication logic
     console.log('Email:', email);
     console.log('Password:', password);
-    router.push('/profile'); // Redirect to profile page after login
+
+    // Set login status in localStorage
+    localStorage.setItem('isLoggedIn', 'true');
+
+    // Redirect to homepage after login
+    router.push('/');
   };
 
   return (
@@ -50,4 +54,3 @@ const LoginCard: React.FC = () => {
 };
 
 export default LoginCard;
-

@@ -2,7 +2,7 @@
     display: flex;
     min-height: 100vh;
     background-color: #B2C1AC;
-  }
+}
 
 .navBar {
     display: flex;
@@ -11,58 +11,51 @@
     background-color: #725B45;
     padding: 20px 0;
     width: 10%;
-  }
-  
-  .navButton {
+    position: relative; /* Allows the logout button to stick to the bottom */
+    height: 100vh; /* Full height for the nav bar */
+}
+
+.navButton {
     background: none;
     border: none;
     margin: 10px 0;
     cursor: pointer;
-  }
-  
-  .navIcon {
+}
+
+.logoutButton {
+    margin-top: auto; /* Pushes the button to the bottom */
+    margin-bottom: 20px; /* Adds space at the bottom */
+}
+
+.navIcon {
     width: 60px;
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
-  }
-  
-  .homeButton {
+}
+
+.homeButton {
     position: absolute;
     top: 20px; 
     right: 20px;
     background: none;
     border: none;
-    margin: 0;
     cursor: pointer;
-  }
+}
 
-  .homeIcon {
+.homeIcon {
     width: 50px;
     height: 50px;
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
-  }
-  
-  .iconButton {
-    background-color: #A4B494;
-    border-radius: 50%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-  }
-  
-  .iconImage {
-    width: 40px;
-    height: 30px;
-  }
-  
-  .mainContent {
+}
+
+.mainContent {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-  }
-  
-  .headerMessage {
+}
+
+.headerMessage, .mainDescription {
     background-color: #9B7959;
     color: white;
     padding: 20px;
@@ -70,30 +63,20 @@
     text-align: center;
     max-width: 600px;
     margin-bottom: 20px;
-  }
-  
-  .characterIcons {
+}
+
+.characterIcons {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-bottom: 10px;
-  }
-  
-  .characterIcon {
+}
+
+.characterIcon {
     width: 300px;
-  }
-  
-  .mainDescription {
-    background-color: #9B7959;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 600px;
-    margin-bottom: 20px;
-  }
-  
-  .loginButton {
+}
+
+.loginButton {
     background-color: white;
     color: #000000;
     padding: 10px 30px;
@@ -101,4 +84,4 @@
     border: none;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
+}
