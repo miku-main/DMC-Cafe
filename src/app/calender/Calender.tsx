@@ -1,9 +1,10 @@
 "use client";
-
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { format, addDays, addWeeks, addMonths, startOfWeek, startOfMonth, endOfWeek, endOfMonth, eachDayOfInterval } from 'date-fns';
 import styles from '../Home/Home/HomePage.module.css';
+import Navbar from '../Home/Home/NavBar';
+import HomeIcon from '../Home/Home/HomeIcon'; // Import the HomeIcon component
 
 const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -107,21 +108,8 @@ const Calendar: React.FC = () => {
 
   return (
     <div className={styles.homePage}>
-      <div className={styles.navBar}>
-        <button className={styles.navButton}>
-          <img src="/images/user-icon.png" alt="User Icon" className={styles.navIcon} /> {}
-        </button>
-        <button className={styles.navButton}>
-          <img src="/images/timer-icon.png" alt="Timer Icon" className={styles.navIcon} /> {}
-        </button>
-        <button className={styles.navButton}>
-          <img src="/images/calendar-icon.png" alt="Calender Icon" className={styles.navIcon} /> {}
-        </button>
-        {}
-      </div>
-      <Link href="/" className="absolute top-4 right-4">
-        <img src="/images/home-icon.png" alt="Home" className="w-10 h-10" />
-      </Link>
+      <Navbar />
+      <HomeIcon />
       <div className={styles.mainContent}>
       <div className={`${styles.mainContent} bg-gray-100 rounded-lg p-6 shadow-lg`}>
           <div className="flex space-x-2 mb-4">

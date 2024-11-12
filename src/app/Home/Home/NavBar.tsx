@@ -14,7 +14,9 @@ const NavBar: React.FC = () => {
   const handleTimerClick = () => {
     router.push('/timer'); 
   };
-
+  const handleCalenderClick = () => {
+    router.push('/calender');
+  }
   const handleTodoClick = () => {
     router.push('/Todo');
   };
@@ -24,9 +26,6 @@ const NavBar: React.FC = () => {
     router.replace('/'); // Redirect to home page
     window.location.reload(); // Force reload to reset login state across components
   };
-  const handleCalenderClick = () => {
-    router.push('/calender');
-  }
 
   return (
     <nav className={styles.navBar}>
@@ -36,15 +35,16 @@ const NavBar: React.FC = () => {
       <button onClick={handleTimerClick} className={styles.navButton}>
         <img src="/images/timer-icon.png" alt="Timer Icon" className={styles.navIcon} />
       </button>
+      <button onClick={handleCalenderClick} className={styles.navButton}>
+        <img src="/images/calendar-icon.png" alt="Calender Icon" className={styles.navIcon} />
+      </button>
       <button onClick={handleTodoClick} className={styles.navButton}>
         <img src="/images/task-icon.png" alt="Task Icon" className={styles.navIcon} />
       </button>
       <button onClick={handleLogoutClick} className={`${styles.navButton} ${styles.logoutButton}`}>
         <img src="/images/exit-icon.png" alt="Exit Icon" className={styles.navIcon} />
       </button>
-      <button onClick={handleCalenderClick} className={styles.navButton}>
-        <img src="/images/calendar-icon.png" alt="Calender Icon" className={styles.navIcon} />
-      </button>
+
     </nav>
   );
 };
