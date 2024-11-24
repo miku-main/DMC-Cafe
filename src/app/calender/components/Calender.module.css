@@ -1,0 +1,150 @@
+/* Calender.module.css */
+
+/* Day View Container */
+.dayViewContainer {
+    display: grid;
+    grid-template-rows: repeat(24, 1fr); /* 24 rows for each hour */
+    grid-template-columns: 1fr; /* Ensures a single column */
+    border: 2px solid #000; /* Outer border */
+    border-radius: 0.5rem;
+    background-color: white;
+    width: 100%; /* Expands the container fully horizontally */
+    height: 100%; /* Expands to fit the parent container vertically */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slight shadow for better contrast */
+}
+
+/* Hour Row */
+.dayHourRow {
+    border-bottom: 1px solid #000; /* Bold row borders */
+    display: flex;
+    align-items: center;
+    justify-content: left; /* Align text to the left */
+    padding: 0.5rem;
+    font-size: 1rem; /* Adjust font size for clarity */
+    height: auto; /* Stretch to fit */
+    color: #333; /* Dark gray text */
+    background-color: #fdfdfd; /* Light background for contrast */
+}
+
+/* Remove the border from the last row */
+.dayHourRow:last-child {
+    border-bottom: none;
+}
+
+
+
+/* Week View Container */
+.weekViewContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 equal columns for each day */
+    grid-template-rows: auto 1fr; /* Header row followed by content rows */
+    width: 100%; /* Stretch to full width */
+    height: 100%; /* Stretch to full height */
+    border: 2px solid black; /* Outer border */
+    border-radius: 0.5rem; /* Rounded corners */
+    background-color: white;
+}
+
+/* Week Header Cells */
+.weekDayHeader {
+    border-bottom: 1px solid black; /* Horizontal line between header and grid */
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Week Day Cells */
+.weekDayCell {
+    border-right: 1px solid black; /* Vertical lines between columns */
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: white;
+}
+
+/* Remove right border from the last column */
+.weekDayCell:last-child,
+.weekDayHeader:last-child {
+    border-right: none;
+}
+
+/* Month View Container */
+.monthViewContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 equal-width columns */
+    grid-auto-rows: 1fr; /* Rows adjust dynamically */
+    gap: 0; /* No space between cells */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    border: 2px solid black; /* Outer border */
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+/* Header Cell (Day Names) */
+.monthDayHeader {
+    border-bottom: 1px solid black; /* Horizontal line between header and cells */
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+}
+
+/* Day Cell (Dates) */
+.monthDayCell {
+    border: 1px solid black; /* Borders around each cell */
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: white;
+    color: black;
+}
+
+/* Empty cells (before the first day of the month) */
+.emptyCell {
+    border: 1px solid black; /* Empty cells still maintain borders */
+    background-color: white;
+}
+
+
+/* Header Container */
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #e9e5e3; /* Dark background for the header */
+    border-radius: 0.5rem;
+}
+
+/* Header Button */
+.headerButton {
+    font-size: 2rem; /* Larger font for navigation buttons */
+    padding: 0.5rem;
+    color: white;
+    background-color: transparent; /* No background for buttons */
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.headerButton:hover {
+    color: #bbb; /* Slightly lighter color on hover */
+}
+
+/* Header Title Container */
+.headerTitleContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between title and additional elements */
+}
+
+/* Header Title */
+.headerTitle {
+    font-size: 1.25rem; /* Slightly larger font */
+    font-weight: bold;
+    color: white;
+}
