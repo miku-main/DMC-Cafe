@@ -11,9 +11,7 @@ export default function Page() {
      <div className={styles.homePage}>
        <NavBar />
        <HomeIcon />
-       <div>
-         <Timer />
-       </div>
+       <Timer />
      </div>
    </>
  );

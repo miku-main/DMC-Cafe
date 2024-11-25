@@ -5,41 +5,50 @@ import styles from "./Timer.module.css";
 
 const Timer = () => {
    const [hours, setHours] = useState(0);
-   const [minutes, setMinutes] = useState(5);
+   const [minutes, setMinutes] = useState(0);
    const [seconds, setSeconds] = useState(0);
    const [isRunning, setIsRunning] = useState(false);
 
+   const formatNumber = (num:number) => String(num).padStart(2, "0")
+
+   const playSound = () => {
+       const audio = new Audio("/sounds/sad-meow-song.mp3")
+       audio
+           .play()
+           .then(() => {
+                console.log("Sound played")
+           })
+           .catch((error) => {
+                console.error("Sound failed:", error)
+           })
+   }
 
    useEffect(() => {
        let interval: number | null = null;
   
        if (isRunning) {
            interval = window.setInterval(() => {
-               setSeconds((prevSeconds) => {
-                   if (prevSeconds > 0) {
-                       return prevSeconds - 1;
-                   } else if (minutes > 0) {
-                       setMinutes((prevMinutes) => prevMinutes - 1);
-                       return 59; 
-                   } else if (hours > 0) {
-                       setHours((prevHours) => prevHours - 1);
-                       setMinutes(59);
-                       return 59;
-                   } else {
-                       if (interval !== null) clearInterval(interval);
-                       return 0;
-                   }
-               });
-           }, 1000);
+               if (hours === 0 && minutes === 0 && seconds === 0) {
+                   setIsRunning(false)
+                   playSound()
+                   if (interval !== null) clearInterval(interval)
+               } else if (seconds > 0) {
+                   setSeconds((prevSeconds) => prevSeconds - 1)
+               } else if (minutes > 0) {
+                   setMinutes((prevMinutes) => prevMinutes - 1)
+                   setSeconds(59)
+               } else if (hours > 0) {
+                   setHours((prevHours) => prevHours - 1)
+                   setMinutes(59)
+                   setSeconds(59)
+               }
+           }, 1000)
        }
-  
+       
        return () => {
-           if (interval !== null) clearInterval(interval as number); 
-       };
-   }, [isRunning, minutes, hours]); 
-  
-  
-
+           if (interval !== null) clearInterval(interval)
+       }
+   }, [isRunning, hours, minutes, seconds])
 
    const setPresetTime = (preset: String) => {
        setIsRunning(false);
@@ -69,6 +78,12 @@ const Timer = () => {
        }
    };
 
+   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, unit: "hours" | "minutes" | "seconds") => {
+        const value = Math.max(0, parseInt(e.currentTarget.value) || 0)
+        if (unit === "hours") setHours(value)
+        if (unit === "minutes") setMinutes(value)
+        if (unit === "seconds") setSeconds(value)
+   }
 
    return (
        <div className={styles.timer}>
@@ -80,13 +95,31 @@ const Timer = () => {
                </div>
            </div>
 
-
            <div className={styles.timeDisplay}>
-               <h1>
-                   {String(hours).padStart(2, "0")} : {String(minutes).padStart(2, "0")} : {String(seconds).padStart(2, "0")}
-               </h1>
+               <input 
+                    type="number"
+                    value={hours > 0 ? formatNumber(hours) : "00"}
+                    onChange={(e) => handleInputChange(e, "hours")}
+                    min="0"
+                    className={styles.inputField}
+                />
+                <span>:</span>
+                <input 
+                    type="number"
+                    value={minutes > 0 ? formatNumber(minutes) : "00"}
+                    onChange={(e) => handleInputChange(e, "minutes")}
+                    min="0"
+                    className={styles.inputField}
+                />
+                <span>:</span>
+                <input 
+                    type="number"
+                    value={seconds > 0 ? formatNumber(seconds) : "00"}
+                    onChange={(e) => handleInputChange(e, "seconds")}
+                    min="0"
+                    className={styles.inputField}
+                />
            </div>
-
 
            <div className={styles.controlcard}>
                <div className={styles.control}>
