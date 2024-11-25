@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { format, addDays, addWeeks, addMonths, startOfWeek, startOfMonth, endOfWeek, endOfMonth, eachDayOfInterval } from 'date-fns';
 import styles from '../../Home/Home/HomePage.module.css';
 import style from '../components/Calender.module.css';
-import { skip } from 'node:test';
-
 
 const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -100,13 +98,11 @@ const Calendar: React.FC = () => {
     return (
       <div style={{ width: '1300px', height: '655px' }}> 
         <div className={style.monthViewContainer}>
-            {/* Header Row: Days of the Week */}
             {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
                 <div key={day} className={style.monthDayHeader}>
                     {day}
                 </div>
             ))}
-            {/* Calendar Grid: Dates */}
             {paddedDays.map((day, i) =>
                 day instanceof Date ? (
                     <div key={day.toString()} className={style.monthDayCell}>
