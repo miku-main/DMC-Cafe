@@ -1,29 +1,31 @@
 /* Calender.module.css */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 /* Day View Container */
 .dayViewContainer {
     display: grid;
     grid-template-rows: repeat(24, 1fr); /* 24 rows for each hour */
     grid-template-columns: 1fr; /* Ensures a single column */
-    border: 2px solid #000; /* Outer border */
-    border-radius: 0.5rem;
-    background-color: white;
+    border: 2px solid black; /* Outer border */
+    border-radius: 0.2rem;
+    background-color: #eee9e6;
     width: 100%; /* Expands the container fully horizontally */
     height: 100%; /* Expands to fit the parent container vertically */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slight shadow for better contrast */
 }
 
 /* Hour Row */
 .dayHourRow {
-    border-bottom: 1px solid #000; /* Bold row borders */
+    font-family: 'Jacques Francois', monospace;
+    border-bottom: 1px solid black; /* Bold row borders */
     display: flex;
     align-items: center;
     justify-content: left; /* Align text to the left */
     padding: 0.5rem;
     font-size: 1rem; /* Adjust font size for clarity */
     height: auto; /* Stretch to fit */
-    color: #333; /* Dark gray text */
-    background-color: #fdfdfd; /* Light background for contrast */
+    color: black; /* Dark gray text */
+    background-color: #eee9e6; /* Light background for contrast */
 }
 
 /* Remove the border from the last row */
@@ -41,13 +43,14 @@
     width: 100%; /* Stretch to full width */
     height: 100%; /* Stretch to full height */
     border: 2px solid black; /* Outer border */
-    border-radius: 0.5rem; /* Rounded corners */
-    background-color: white;
+    border-radius: 0.2rem; /* Rounded corners */
+    background-color: #eee9e6;
 }
 
 /* Week Header Cells */
 .weekDayHeader {
-    border-bottom: 1px solid black; /* Horizontal line between header and grid */
+    font-family: 'Jacques Francois', monospace;
+    border-bottom: 1.5px solid black; /* Horizontal line between header and grid */
     text-align: center;
     font-weight: bold;
     padding: 0.5rem;
@@ -56,11 +59,12 @@
 
 /* Week Day Cells */
 .weekDayCell {
-    border-right: 1px solid black; /* Vertical lines between columns */
+    
+    border-right: 1.5px solid black; /* Vertical lines between columns */
     padding: 1rem;
     text-align: center;
     font-size: 0.9rem;
-    background-color: white;
+    background-color: #eee9e6;
 }
 
 /* Remove right border from the last column */
@@ -77,35 +81,37 @@
     gap: 0; /* No space between cells */
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    border: 2px solid black; /* Outer border */
-    border-radius: 0.5rem;
-    background-color: white;
+    border: 2.5px solid black; /* Outer border */
+    border-radius: 0rem;
+    background-color: #eee9e6;
 }
 
 /* Header Cell (Day Names) */
 .monthDayHeader {
-    border-bottom: 1px solid black; /* Horizontal line between header and cells */
+    font-family: 'Jacques Francois', monospace;
+    border-bottom: 1.5px solid black; /* Horizontal line between header and cells */
     text-align: center;
     font-weight: bold;
-    padding: 0.5rem;
+    padding: 0.7rem;
     font-size: 1rem;
-    background-color: white;
+    background-color: #eee9e6;
     color: black;
 }
 
 /* Day Cell (Dates) */
 .monthDayCell {
-    border: 1px solid black; /* Borders around each cell */
+    font-family: 'Jacques Francois', monospace;
+    border: 1.5px solid black; /* Borders around each cell */
     text-align: center;
     font-size: 0.9rem;
-    background-color: white;
+    background-color: #eee9e6;
     color: black;
 }
 
 /* Empty cells (before the first day of the month) */
 .emptyCell {
-    border: 1px solid black; /* Empty cells still maintain borders */
-    background-color: white;
+    border: 1.5px solid black; /* Empty cells still maintain borders */
+    background-color: #eee9e6;
 }
 
 
@@ -124,7 +130,7 @@
 .headerButton {
     font-size: 2rem; /* Larger font for navigation buttons */
     padding: 0.5rem;
-    color: white;
+    color: black;
     background-color: transparent; /* No background for buttons */
     border: none;
     cursor: pointer;
@@ -132,7 +138,7 @@
 }
 
 .headerButton:hover {
-    color: #bbb; /* Slightly lighter color on hover */
+    color: white; /* Slightly lighter color on hover */
 }
 
 /* Header Title Container */
@@ -144,7 +150,46 @@
 
 /* Header Title */
 .headerTitle {
+    font-family: 'Jacques Francois', monospace;
     font-size: 1.25rem; /* Slightly larger font */
     font-weight: bold;
+    color: black;
+}
+
+/* Button Container */
+.buttonContainer {
+    display: flex;
+    justify-content: space-around; /* Space between buttons */
+    align-items: center;
+    background-color: #7C9B70; /* Green background */
+    padding: 0.5rem 1rem; /* Padding around the buttons */
+    border-radius: 1rem; /* Rounded container corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Shared button styles */
+.calendarButton {
+    font-family: 'Jacques Francois', monospace;
+    padding: 0.5rem 1.5rem; /* Button padding for size */
+    background-color: #eee9e6; /* Neutral background */
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 0.5rem; /* Rounded button corners */
+    border: 1px solid #ccc; /* Light border */
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.calendarButton:hover {
+    background-color: #e0e0e0; /* Slightly darker background on hover */
+}
+
+/* Active button styles */
+.calendarButtonActive {
+    background-color: #7C9B70; /* Match container background */
     color: white;
+    border: 1px solid #5c7b55; /* Slightly darker border */
 }

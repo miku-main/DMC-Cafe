@@ -132,13 +132,29 @@ const Calendar: React.FC = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.mainContent}>
-      <div className={`${styles.mainContent} rounded-lg p-6 shadow-lg`}>
-          <div className="flex space-x-2 mb-4">
-            <button onClick={handleToday} className="px-4 py-2 bg-white text-black rounded-md shadow-md hover:bg-gray-200">Today</button>
-            <button onClick={() => setView('day')} className={`px-4 py-2 ${view === 'day' ? 'bg-[#7C9B70]' : 'bg-white'} text-black rounded-md shadow-md`}>Day</button>
-            <button onClick={() => setView('week')} className={`px-4 py-2 ${view === 'week' ? 'bg-[#7C9B70]' : 'bg-white'} text-black rounded-md shadow-md`}>Week</button>
-            <button onClick={() => setView('month')} className={`px-4 py-2 ${view === 'month' ? 'bg-[#7C9B70]' : 'bg-white'} text-black rounded-md shadow-md`}>Month</button>
-          </div>
+      <div className={styles.mainContent}>
+      <div className="flex space-x-2 mb-4">
+        <button
+            onClick={handleToday}
+            className={`${style.calendarButton}`}>
+            Today
+        </button>
+        <button
+            onClick={() => setView('day')}
+            className={`${style.calendarButton} ${view === 'day' ? styles.calendarButtonActive : ''}`}>
+            Day
+        </button>
+        <button
+            onClick={() => setView('week')}
+            className={`${style.calendarButton} ${view === 'week' ? styles.calendarButtonActive : ''}`}>
+            Week
+        </button>
+        <button
+            onClick={() => setView('month')}
+            className={`${style.calendarButton} ${view === 'month' ? styles.calendarButtonActive : ''}`}>
+            Month
+        </button>
+      </div>
           {renderHeader()}
           {renderContent()}
         </div>
