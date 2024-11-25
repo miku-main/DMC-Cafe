@@ -7,10 +7,14 @@ import CreateAccountCard from "./components/CreateAccountCard";
 import styles from "./CreateAccountPage.module.css";
 
 const CreateAccountPage: React.FC = () => {
+  const handleLogout = () => {
+    console.log("User logged out"); // Replace with actual logout logic if needed
+  };
+
   return (
     <div className={styles.homePage}>
       {/* Navbar stays fixed at the top */}
-      <Navbar />
+      <Navbar onLogout={handleLogout} />
       
       {/* Place HomeIcon independently to avoid interfering with layout */}
       <HomeIcon />

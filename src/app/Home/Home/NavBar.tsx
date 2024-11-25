@@ -2,13 +2,11 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import styles from "./HomePage.module.css";
 
-interface NavBarProps {
-    onLogout: () => void; // Accept a logout callback
-}
-
-const NavBar: React.FC<NavBarProps> = ({ onLogout }) => {
+const NavBar: React.FC = () => {
+    const { data: session } = useSession(); // Get session data
     const router = useRouter();
 
     const handleUserClick = () => {
@@ -27,9 +25,8 @@ const NavBar: React.FC<NavBarProps> = ({ onLogout }) => {
         router.push("/Todo");
     };
 
-    const handleLogoutClick = () => {
-        onLogout(); // Call the logout handler
-        router.replace("/"); // Redirect to the home page
+    const handleLogoutClick = async () => {
+        await signOut({ callbackUrl: "/" }); // Log out and reload homepage
     };
 
     return (
@@ -65,19 +62,20 @@ const NavBar: React.FC<NavBarProps> = ({ onLogout }) => {
                     className={styles.navIcon}
                 />
             </button>
-            <button
-                onClick={handleLogoutClick}
-                className={`${styles.navButton} ${styles.logoutButton}`}
-            >
-                <img
-                    src="/images/exit-icon.png"
-                    alt="Exit Icon"
-                    className={styles.navIcon}
-                />
-            </button>
+            {session && (
+                <button
+                    onClick={handleLogoutClick}
+                    className={`${styles.navButton} ${styles.logoutButton}`}
+                >
+                    <img
+                        src="/images/exit-icon.png"
+                        alt="Exit Icon"
+                        className={styles.navIcon}
+                    />
+                </button>
+            )}
         </nav>
     );
 };
 
 export default NavBar;
-
