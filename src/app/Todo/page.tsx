@@ -1,27 +1,29 @@
 "use client";
+
 import * as React from "react";
-import { useSession } from "next-auth/react"; // Import to get the logged-in user's session
+import { useSession } from "next-auth/react";
 import Todo from "./components/Todo";
 import Form from "./components/Form";
 
 interface Task {
+    _id: string;
     title: string;
     dueDate: string;
     priority: number;
     completed: boolean;
     imageUrl: string;
-    userId: string; // Include userId to associate tasks with the logged-in user
+    userId: string;
 }
 
 function Home() {
-    const { data: session } = useSession(); // Get the logged-in user's session
+    const { data: session } = useSession();
     const [showForm, setShowForm] = React.useState(false);
-    const [tasks, setTasks] = React.useState<Task[]>([]); // Initialize with an empty array
+    const [tasks, setTasks] = React.useState<Task[]>([]);
 
     const fetchTasks = async () => {
-        if (!session?.user?.id) return; // Only fetch tasks if the user is logged in
+        if (!session?.user?.id) return;
         try {
-            const response = await fetch(`/api/tasks?userId=${session.user.id}`);
+            const response = await fetch("/api/tasks");
             if (response.ok) {
                 const data = await response.json();
                 setTasks(data);
@@ -34,28 +36,72 @@ function Home() {
     };
 
     React.useEffect(() => {
-        fetchTasks(); // Fetch tasks on initial render
+        if (session) fetchTasks();
     }, [session]);
 
-    const handleAddTask = (task: Task) => {
-        setTasks((prevTasks) => [...prevTasks, task]); // Add the task with the 'completed' property
-        setShowForm(false); // Return to the task list view
+    const handleAddTask = async (task: Omit<Task, "_id">) => {
+        try {
+            const response = await fetch("/api/tasks", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(task),
+            });
+            if (response.ok) {
+                const savedTask = await response.json();
+                setTasks((prevTasks) => [...prevTasks, savedTask]);
+            } else {
+                console.error("Failed to add task");
+            }
+        } catch (error) {
+            console.error("Error adding task:", error);
+        } finally {
+            setShowForm(false);
+        }
     };
 
-    const handleToggleTask = (index: number) => {
-        const updatedTasks = tasks.map((task, i) =>
-            i === index ? { ...task, completed: !task.completed } : task
-        );
-        setTasks(updatedTasks);
+    const handleToggleTask = async (index: number) => {
+        const updatedTask = { ...tasks[index], completed: !tasks[index].completed };
+        try {
+            const response = await fetch(`/api/tasks/${updatedTask._id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ completed: updatedTask.completed }),
+            });
+
+            if (response.ok) {
+                const updatedData = await response.json();
+                setTasks((prevTasks) =>
+                    prevTasks.map((task, i) => (i === index ? updatedData : task))
+                );
+            } else {
+                console.error("Failed to update task");
+            }
+        } catch (error) {
+            console.error("Error updating task:", error);
+        }
     };
 
-    const handleDeleteTask = (index: number) => {
-        const updatedTasks = tasks.filter((_, i) => i !== index);
-        setTasks(updatedTasks);
+    const handleDeleteTask = async (index: number) => {
+        const taskToDelete = tasks[index];
+        try {
+            const response = await fetch(`/api/tasks/${taskToDelete._id}`, {
+                method: "DELETE",
+            });
+
+            if (response.ok) {
+                console.log("Task deleted successfully");
+                setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
+            } else {
+                const error = await response.json();
+                console.error("Failed to delete task:", error.message);
+            }
+        } catch (error) {
+            console.error("Error deleting task:", error);
+        }
     };
 
     const handleButtonClick = () => {
-        setShowForm(true); // Show the form to add a new task
+        setShowForm(true);
     };
 
     if (!session) {

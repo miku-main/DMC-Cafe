@@ -1,42 +1,37 @@
-"use client";
-import * as React from "react";
+import React, { useState } from "react";
 import styles from "./Form.module.css";
 
+interface Task {
+    title: string;
+    dueDate: string;
+    priority: number;
+    completed: boolean;
+    imageUrl: string;
+    userId: string;
+}
+
 interface FormProps {
-    onAddTask: (task: { title: string; dueDate: string; priority: number; imageUrl: string; userId: string; completed: boolean }) => void;
-    userId: string; // Add userId to associate tasks with the user
+    onAddTask: (task: Omit<Task, "_id">) => void; // Task without `_id`
+    userId: string;
 }
 
 function Form({ onAddTask, userId }: FormProps) {
-    const [title, setTitle] = React.useState<string>(""); // Initialize with an empty string
-    const [dueDate, setDueDate] = React.useState<string>(""); // Initialize with an empty string
-    const [priority, setPriority] = React.useState<number>(1); // Default priority is 1
-    const [imageUrl, setImageUrl] = React.useState<string>(""); // New state for image URL
+    const [title, setTitle] = useState("");
+    const [dueDate, setDueDate] = useState("");
+    const [priority, setPriority] = useState(1);
+    const [imageUrl, setImageUrl] = useState("");
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (title.trim()) {
-            const newTask = { title, dueDate, priority, imageUrl, userId, completed: false }; // Add 'completed' property
-
-            try {
-                // Send task to the backend
-                const response = await fetch("/api/tasks", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(newTask),
-                });
-
-                if (response.ok) {
-                    const savedTask = await response.json();
-                    console.log("Task saved:", savedTask);
-                    onAddTask(savedTask); // Add the task to the UI state
-                } else {
-                    console.error("Failed to save task");
-                }
-            } catch (error) {
-                console.error("Error saving task:", error);
-            }
-
+            onAddTask({
+                title,
+                dueDate,
+                priority,
+                completed: false,
+                imageUrl,
+                userId,
+            });
             // Clear form fields
             setTitle("");
             setDueDate("");

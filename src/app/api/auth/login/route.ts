@@ -18,8 +18,9 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "Invalid email or password" }, { status: 400 });
         }
 
-        return NextResponse.json({ message: "Login successful" });
+        return NextResponse.json({ message: "Login successful", userId: user._id }); // Return the user ID
     } catch (error) {
+        console.error("Error logging in:", error);
         return NextResponse.json({ error: "Error logging in" }, { status: 500 });
     }
 }
