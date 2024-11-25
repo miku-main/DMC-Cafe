@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "../Home/Home/NavBar";
 import HomeIcon from "../Home/Home/HomeIcon";
 import CreateAccountCard from "./components/CreateAccountCard";
-import styles from "./CreateAccountPage.module.css";
+import styles from "./components/CreateAccountPage.module.css";
 
 const CreateAccountPage: React.FC = () => {
   const handleLogout = () => {

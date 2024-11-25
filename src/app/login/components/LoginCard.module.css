@@ -51,3 +51,13 @@
 .button:hover {
   background-color: #e0e0e0;
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.success {
+  color: green;
+  font-size: 14px;
+}
