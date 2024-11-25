@@ -4,6 +4,7 @@ import * as React from "react";
 import { useSession } from "next-auth/react";
 import Todo from "./components/Todo";
 import Form from "./components/Form";
+import Login from "./components/Login"
 
 interface Task {
     _id: string;
@@ -105,7 +106,7 @@ function Home() {
     };
 
     if (!session) {
-        return <div>Please log in to manage your tasks.</div>;
+        return <div> <Login /> </div>;
     }
 
     return (
