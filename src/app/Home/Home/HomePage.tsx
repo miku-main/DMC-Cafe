@@ -1,33 +1,52 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import NavBar from './NavBar';
-import HomeIcon from './HomeIcon';
-import HeaderMessage from './HeaderMessage';
-import CharacterIcons from './CharacterIcons';
-import MainDescription from './MainDescription';
-import LoginButton from './LoginButton';
-import styles from './HomePage.module.css';
+import React, { useEffect, useState } from "react";
+import NavBar from "./NavBar";
+import HomeIcon from "./HomeIcon";
+import HeaderMessage from "./HeaderMessage";
+import CharacterIcons from "./CharacterIcons";
+import MainDescription from "./MainDescription";
+import styles from "./HomePage.module.css";
 
 const HomePage: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    // Check the login state on component mount
     useEffect(() => {
-        const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
+        const loggedInStatus = localStorage.getItem("isLoggedIn") === "true";
         setIsLoggedIn(loggedInStatus);
-    }, [isLoggedIn]); // Add isLoggedIn as a dependency to update on login/logout
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.setItem("isLoggedIn", "false"); // Clear the logged-in status
+        setIsLoggedIn(false); // Update the state
+    };
 
     return (
         <div className={styles.homePage}>
             <HomeIcon />
             <div className={styles.homePage}>
-                <NavBar />
+                {/* Pass handleLogout to NavBar */}
+                <NavBar onLogout={handleLogout} />
                 <div className={styles.mainContent}>
                     <HeaderMessage />
                     <CharacterIcons />
                     <MainDescription />
-                    {/* Conditionally render LoginButton only if not logged in */}
-                    {!isLoggedIn && <LoginButton />}
+                    {!isLoggedIn ? (
+                        <button
+                            onClick={() => (window.location.href = "/login")}
+                            className={styles.loginButton}
+                        >
+                            Log in
+                        </button>
+                    ) : (
+                        <button
+                            onClick={handleLogout}
+                            className={styles.logoutButton}
+                        >
+                            Log out
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
@@ -35,3 +54,4 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+

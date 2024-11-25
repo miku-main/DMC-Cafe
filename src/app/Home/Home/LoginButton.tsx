@@ -1,27 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import styles from './HomePage.module.css';
+import React from "react";
+import { useRouter } from "next/navigation";
+import styles from "./HomePage.module.css";
 
 const LoginButton: React.FC = () => {
-  const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const router = useRouter();
 
-  useEffect(() => {
-    const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
-    setIsLoggedIn(loggedInStatus);
-  }, []);
+    const handleLoginClick = () => {
+        localStorage.setItem("isLoggedIn", "true"); // Set the logged-in status
+        router.push("/"); // Redirect to home page after login
+    };
 
-  const handleLoginClick = () => {
-    router.push('/login'); // Redirect to the login page
-  };
-
-  return !isLoggedIn ? (
-    <button onClick={handleLoginClick} className={styles.loginButton}>
-      Log in
-    </button>
-  ) : null; // Hide the login button if already logged in
+    return (
+        <button onClick={handleLoginClick} className={styles.loginButton}>
+            Log in
+        </button>
+    );
 };
 
 export default LoginButton;

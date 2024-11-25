@@ -1,31 +1,53 @@
 "use client";
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import styles from './LoginCard.module.css';
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import styles from "./LoginCard.module.css";
 
 const LoginCard: React.FC = () => {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleLoginClick = () => {
-    // Here you can add authentication logic
-    console.log('Email:', email);
-    console.log('Password:', password);
+  const handleLoginClick = async () => {
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false, // Prevent automatic redirection
+      });
 
-    // Set login status in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
-
-    // Redirect to homepage after login
-    router.push('/');
+      if (result?.error) {
+        setError(result.error || "Invalid email or password. Please try again.");
+      } else if (result?.ok) {
+        setError(""); // Clear error on success
+        router.push("/"); // Redirect to the homepage
+      }
+    } catch (err) {
+      console.error("Error during login:", err);
+      setError("An unexpected error occurred. Please try again.");
+    }
   };
 
   return (
     <div className={styles.profileCard}>
-      <img src="/images/user-icon.png" alt="User Icon" className={styles.profileImage} />
-      <form className={styles.form}>
-        <label htmlFor="email" className={styles.label}>Email:</label>
+      <img
+        src="/images/user-icon.png"
+        alt="User Icon"
+        className={styles.profileImage}
+      />
+      <form
+        className={styles.form}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleLoginClick();
+        }}
+      >
+        <label htmlFor="email" className={styles.label}>
+          Email:
+        </label>
         <input
           type="email"
           id="email"
@@ -33,9 +55,12 @@ const LoginCard: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Type here"
           className={styles.input}
+          required
         />
-        
-        <label htmlFor="password" className={styles.label}>Password:</label>
+
+        <label htmlFor="password" className={styles.label}>
+          Password:
+        </label>
         <input
           type="password"
           id="password"
@@ -43,9 +68,12 @@ const LoginCard: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Type here"
           className={styles.input}
+          required
         />
 
-        <button type="button" onClick={handleLoginClick} className={styles.button}>
+        {error && <p className={styles.error}>{error}</p>}
+
+        <button type="submit" className={styles.button}>
           Log In
         </button>
       </form>
