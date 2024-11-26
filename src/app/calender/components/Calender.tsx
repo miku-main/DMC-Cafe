@@ -6,7 +6,14 @@ import style from '../components/Calender.module.css';
 
 const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [view, setView] = useState<'day' | 'week' | 'month'>('month');
+  const [view, setView] = useState<'day' | 'week' | 'month'>('day');
+  // A mock event list, integrate with a real API later.
+  const events = [
+    { date: '2024-11-26T00:00:00', title: 'Team Meeting' },
+    { date: '2024-11-26T00:00:00', title: 'Exam Study' },
+    { date: '2024-11-26T00:00:00', title: 'abc' },
+    { date: '2024-11-27T00:00:00', title: 'Appointment' },
+  ];
 
   const handlePrev = () => {
     if (view === 'day') {
@@ -54,16 +61,37 @@ const Calendar: React.FC = () => {
     </div>
   );
 
-  const renderDayView = () => (
-    <div style={{ width: '1300px', height: '655px' }}> 
-        <div className={style.dayViewContainer}>
-        </div>
-    </div>
-  );
+  const renderDayView = () => {
+    
+    const dayEvents = events.filter(event =>
+      format(new Date(event.date), 'yyyy-MM-dd') === format(currentDate, 'yyyy-MM-dd')
+    );
+
+    return (
+      <div style={{ width: '1300px', height: '655px' }}> 
+          <div className={style.dayViewContainer}>
+            {dayEvents.length ? (
+              <ul className={style.eventList}>
+                {dayEvents.map((event, index) => (
+                  <li key={index} className={style.eventItem} onClick={() => alert(`Event: ${event.title}`)}>
+                    <strong>{event.title}</strong>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <strong className={style.noEventsMessage}>No events for today.</strong>
+            )}
+          </div>
+      </div>
+    );
+  };
 
   const renderWeekView = () => {
     const start = startOfWeek(currentDate);
     const days = Array.from({ length: 7 }, (_, i) => addDays(start, i));
+
+    const getEventsForDay = (day: string | number | Date) =>
+      events.filter(event => format(new Date(event.date), 'yyyy-MM-dd') === format(day, 'yyyy-MM-dd'));
 
     return (
       <div style={{ width: '1300px', height: '655px' }}> 
@@ -74,8 +102,16 @@ const Calendar: React.FC = () => {
                 </div>
             ))}
             {days.map(day => (
-                <div key={day.toString()} className={style.weekDayCell}>
+              <div key={day.toString()} className={style.weekDayCell}>
+                <div className={style.dateNumber}>{format(day, 'd')}</div>
+                <div className={style.eventContainer}>
+                  {getEventsForDay(day).map(event => (
+                    <div key={event.title} className={style.weekEvent}>
+                      {event.title}
+                    </div>
+                  ))}
                 </div>
+              </div>
             ))}
         </div>
       </div>
@@ -87,8 +123,10 @@ const Calendar: React.FC = () => {
     const end = endOfMonth(currentDate);
     const days = eachDayOfInterval({ start, end });
 
-    // Add padding for days before the first day of the month
     const paddedDays = Array.from({ length: start.getDay() }).fill(null).concat(days);
+
+    const getEventsForDay = (day: string | number | Date) =>
+      events.filter(event => format(new Date(event.date), 'yyyy-MM-dd') === format(day, 'yyyy-MM-dd'));
 
     return (
       <div style={{ width: '1300px', height: '655px' }}> 
@@ -100,11 +138,18 @@ const Calendar: React.FC = () => {
             ))}
             {paddedDays.map((day, i) =>
                 day instanceof Date ? (
-                    <div key={day.toString()} className={style.monthDayCell}>
-                        {format(day, 'd')}
+                  <div key={day.toString()} className={style.monthDayCell}>
+                    <div className={style.dateNumber}>{format(day, 'd')}</div>
+                    <div className={style.eventContainer}>
+                      {getEventsForDay(day).map(event => (
+                        <div key={event.title} className={style.monthEvent}>
+                          {event.title}
+                        </div>
+                      ))}
                     </div>
+                  </div>
                 ) : (
-                    <div key={i} className={style.emptyCell}></div>
+                  <div key={i} className={style.emptyCell}></div>
                 )
             )}
         </div>

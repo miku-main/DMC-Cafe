@@ -39,7 +39,7 @@
     height: 100%; 
     border: 2px solid black; 
     border-radius: 0.2rem; 
-    background-color: #eee9e6;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Week Header Cells */
@@ -54,12 +54,12 @@
 
 /* Week Day Cells */
 .weekDayCell {
-    
+    font-family: 'Jacques Francois', monospace;
     border-right: 1.5px solid black; 
     padding: 1rem;
     text-align: center;
-    font-size: 0.9rem;
-    background-color: #eee9e6;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 /* Remove right border from the last column */
@@ -78,7 +78,7 @@
     height: 100%; 
     border: 2.5px solid black; 
     border-radius: 0rem;
-    background-color: #eee9e6;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Header Cell (Day Names) */
@@ -89,7 +89,7 @@
     font-weight: bold;
     padding: 0.7rem;
     font-size: 1rem;
-    background-color: #eee9e6;
+    background-color: rgba(255, 255, 255, 0);
     color: black;
 }
 
@@ -98,15 +98,15 @@
     font-family: 'Jacques Francois', monospace;
     border: 1.5px solid black; 
     text-align: center;
-    font-size: 0.9rem;
-    background-color: #eee9e6;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0);
     color: black;
 }
 
 /* Empty cells (before the first day of the month) */
 .emptyCell {
     border: 1.5px solid black; 
-    background-color: #eee9e6;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 
@@ -138,6 +138,7 @@
 
 /* Header Title Container */
 .headerTitleContainer {
+    font-family: 'Jacques Francois', monospace;
     display: flex;
     align-items: center;
     gap: 1rem; 
@@ -187,4 +188,97 @@
     background-color: #7C9B70; 
     color: white;
     border: 1px solid #5c7b55;
+}
+
+.dateNumber {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+  
+.eventContainer {
+    margin-top: 5px;
+}
+  
+.event {
+    background-color: #f0f8ff;
+    color: #333;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+  /* Event list */
+.eventList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+  /* Individual event item */
+.eventItem {
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: #ffe6cc; 
+    border-left: 4px solid #ffab73; 
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #4d3e3e; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+  
+  /* Hover effect for event items */
+.eventItem:hover {
+    background-color: #ffdab9; 
+    transform: scale(1.02); 
+}
+  
+  /* Fallback message */
+.noEventsMessage {
+    font-family: 'Jacques Francois', monospace;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #000000; 
+}
+
+  /* Event Items in Week View */
+.weekEvent {
+    font-family: 'Jacques Francois', monospace;
+    background-color: #ffe6cc; 
+    border-left: 4px solid #ffab73; 
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 0.9rem;
+    color: #4d3e3e;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+  
+  /* Hover Effect for Event Items */
+.weekEvent:hover {
+    background-color: #ffdab9; 
+    transform: scale(1.02);
+}
+
+  /* Event Items in Month View */
+.monthEvent {
+    background-color: #ffe6cc; 
+    border-left: 4px solid #ffab73; 
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 0.8rem;
+    color: #4d3e3e;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+  
+  /* Hover Effect for Event Items */
+.monthEvent:hover {
+    background-color: #ffdab9; 
+    transform: scale(1.02);
 }
