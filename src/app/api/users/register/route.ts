@@ -3,11 +3,10 @@ import connectMongo from "../../../utils/connectMongo";
 import User from "../../../models/UserSchema";
 import bcrypt from "bcryptjs";
 
-// This function handles POST requests
 export async function POST(req: Request) {
   try {
     const body = await req.json(); // Parse JSON body
-    const { email, password } = body;
+    const { email, password, profilePicture } = body; // Add profilePicture
 
     if (!email || !password) {
       return NextResponse.json(
@@ -37,7 +36,12 @@ export async function POST(req: Request) {
     const hashedPassword = await bcrypt.hash(password, 10);
     console.log("Generated Hashed Password:", hashedPassword);
 
-    const newUser = new User({ email, password: hashedPassword });
+    // Create a new user object
+    const newUser = new User({
+      email,
+      password: hashedPassword,
+      profilePicture: profilePicture || null, // Save profilePicture or set to null
+    });
 
     // Save the user
     console.log("Saving new user to database...");

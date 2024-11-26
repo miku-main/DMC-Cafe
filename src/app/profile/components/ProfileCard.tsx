@@ -1,11 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./ProfileCard.module.css";
 
 const ProfileCard: React.FC = () => {
   const router = useRouter();
+  const [profilePicture, setProfilePicture] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Fetch the logged-in user's profile picture from the backend
+    const fetchUserProfile = async () => {
+      try {
+        const response = await fetch("/api/auth/session");
+        const session = await response.json();
+
+        if (session?.user?.profilePicture) {
+          setProfilePicture(session.user.profilePicture); // Set the profile picture
+        } else {
+          setProfilePicture(null); // Fallback to default icon
+        }
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+        setProfilePicture(null);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
 
   const handleUserClick = () => {
     router.push("/login"); // Redirect to login page
@@ -18,7 +40,7 @@ const ProfileCard: React.FC = () => {
   return (
     <div className={styles.profileCard}>
       <img
-        src="/images/user-icon.png"
+        src={profilePicture || "/images/user-icon.png"} // Display fetched or default icon
         alt="User Icon"
         className={styles.profileImage}
       />
@@ -33,4 +55,5 @@ const ProfileCard: React.FC = () => {
 };
 
 export default ProfileCard;
+
 

@@ -22,8 +22,16 @@ const LoginCard: React.FC = () => {
       if (result?.error) {
         setError(result.error || "Invalid email or password. Please try again.");
       } else if (result?.ok) {
-        setError(""); // Clear error on success
-        router.push("/"); // Redirect to the homepage
+        // Fetch session to get the userId
+        const response = await fetch("/api/auth/session").then((res) => res.json());
+        const userId = response?.user?.id;
+
+        if (userId) {
+          setError(""); // Clear error on success
+          router.push(`/userProfile?userId=${userId}`); // Redirect to userProfile with userId
+        } else {
+          setError("Unable to retrieve user ID. Please try again.");
+        }
       }
     } catch (err) {
       console.error("Error during login:", err);
