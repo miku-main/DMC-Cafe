@@ -10,12 +10,12 @@ function Login() {
     return (
         <div className={styles.loginCardWrapper}>
             <div className={styles.loginCard}>
-                <h2 className={styles.loginMessage}>Please log in to manage your tasks</h2>
+                <h2 className={styles.loginMessage}>Please log in or create account to manage your tasks</h2>
                 <button
                     className={styles.loginButton}
-                    onClick={() => router.push("/login")} // Redirect to login component
+                    onClick={() => router.push("/profile")} // Redirect to login component
                 >
-                    Log In
+                    Log In / Create Account
                 </button>
             </div>
         </div>

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 .homePage {
     position: relative;
     min-height: 100vh;
@@ -78,6 +81,7 @@
 }
 
 .headerMessage {
+    font-family: 'Jacques Francois', monospace;
     background-color: #9B7959;
     color: white;
     padding: 20px;
@@ -86,18 +90,19 @@
     max-width: 600px;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 40px; /* Increased margin to add more space between description and buttons */
+    margin-bottom: 200px; /* Increased margin to add more space between description and buttons */
 }
 
 .loginButton, .createAccountButton {
+    font-family: 'Jacques Francois', monospace;
     background-color: white;
     color: #000000;
     padding: 10px 30px;
-    border-radius: 40px;
+    border-radius: 50px;
     border: none;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 10px;
+    margin: 40px;
 }
 
 @media (max-width: 768px) {

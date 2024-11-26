@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+
 .loginCardWrapper {
     display: flex;
     justify-content: center;
@@ -17,12 +21,14 @@
 }
 
 .loginMessage {
+    font-family: 'Jacques Francois', monospace;
     font-size: 36px;
     margin-bottom: 20px;
     color: #333333;
 }
 
 .loginButton {
+    font-family: 'Jacques Francois', monospace;
     padding: 10px 20px;
     font-size: 20px;
     color: #ffffff;

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 .createAccountPage {
   display: flex;
@@ -14,6 +16,7 @@
 }
 
   .profileContent {
+    font-family: 'Jacques Francois', monospace;
     display: flex;
     flex-grow: 1;
     justify-content: center;

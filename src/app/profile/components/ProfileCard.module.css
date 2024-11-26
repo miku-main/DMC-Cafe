@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 /* src/components/ProfileCard.module.css */
 .profileCard {
   background-color: #9B7959;
@@ -17,6 +20,7 @@
 }
 
 .button {
+  font-family: 'Jacques Francois', monospace;
   background-color: #ffffff;
   border: none;
   border-radius: 20px;
