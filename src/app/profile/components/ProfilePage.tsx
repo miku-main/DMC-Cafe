@@ -32,7 +32,6 @@ const ProfilePage: React.FC = () => {
       <div className={styles.profilePage}>
         <Navbar />
         <div className={styles.profileContent}>
-          <h1>Welcome, {userName || "User"}!</h1>
           <ProfileCard />
         </div>
       </div>

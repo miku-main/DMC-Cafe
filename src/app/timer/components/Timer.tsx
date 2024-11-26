@@ -146,22 +146,33 @@ const Timer = () => {
             </div>
 
             {/* Dropdown for selecting music positioned at the bottom-right */}
-            <div className={styles.musicDropdownContainer}>
-                <select
-                    className={styles.musicDropdown}
-                    onChange={handleTrackChange}
-                    value={selectedTrack}
-                >
-                    <option value="none">None</option>
-                    <option value="/sounds/study.mp3">Study</option>
-                    <option value="/sounds/relax.mp3">Relaxing</option>
-                    <option value="/sounds/Lofi.mp3">LoFi</option>
-                    <option value="/sounds/calm.mp3">Calm</option>
-                    <option value="/sounds/dreamy.mp3">Dreamy</option>
-                    <option value="/sounds/piano.mp3">Piano</option>
-                </select>
+                <div className={styles.musicDropdownContainer}>
+                <img
+                    src="/music.png" // Replace with your actual icon path
+                    alt="Music Icon"
+                    style={{
+                        width: '24px',
+                        height: '24px',
+                        objectFit: 'contain',
+                        display: 'inline-block',
+                        filter: 'drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))',
+                    }}
+                    />
+                    <select
+                        className={styles.musicDropdown}
+                        onChange={handleTrackChange}
+                        value={selectedTrack}
+                    >
+                        <option value="none">None</option>
+                        <option value="/sounds/study.mp3">Study</option>
+                        <option value="/sounds/relax.mp3">Relaxing</option>
+                        <option value="/sounds/Lofi.mp3">LoFi</option>
+                        <option value="/sounds/calm.mp3">Calm</option>
+                        <option value="/sounds/dreamy.mp3">Dreamy</option>
+                        <option value="/sounds/piano.mp3">Piano</option>
+                    </select>
+                </div>
             </div>
-        </div>
     );
 };
 

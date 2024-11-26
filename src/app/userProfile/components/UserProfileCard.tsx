@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import styles from "./UserProfileCard.module.css"; // Import the CSS module
 
 const predefinedImages = [
   "/bacon.png",
@@ -13,7 +14,7 @@ const predefinedImages = [
 const UserProfileCard: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const userId = searchParams.get("userId"); // Retrieve user ID from query params
+  const userId = searchParams.get("userId");
   const [selectedImage, setSelectedImage] = useState<string>("");
   const [error, setError] = useState<string>("");
 
@@ -35,7 +36,6 @@ const UserProfileCard: React.FC = () => {
     }
 
     try {
-      // Send the selected image and userId to the backend
       const response = await fetch("/api/users/updateProfilePicture", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -46,10 +46,10 @@ const UserProfileCard: React.FC = () => {
         const data = await response.json();
 
         if (data.redirect) {
-          router.push(data.redirect); // Redirect to the profile folder
+          router.push(data.redirect);
         } else {
           alert("Profile picture updated successfully!");
-          router.push("/profile"); // Fallback redirect
+          router.push("/profile");
         }
       } else {
         const errorData = await response.json();
@@ -63,41 +63,26 @@ const UserProfileCard: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <h1>Select Your Profile Picture</h1>
-      <div style={{ display: "flex", gap: "10px", justifyContent: "center", margin: "20px 0" }}>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Select Your Profile Picture</h1>
+      <div className={styles.imageGrid}>
         {predefinedImages.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Profile ${index + 1}`}
-            style={{
-              width: "100px",
-              height: "100px",
-              borderRadius: "50%",
-              border: selectedImage === image ? "3px solid blue" : "1px solid gray",
-              cursor: "pointer",
-            }}
+            className={`${styles.profileImage} ${
+              selectedImage === image ? styles.selected : ""
+            }`}
             onClick={() => {
               setSelectedImage(image);
-              setError(""); // Clear any previous error
+              setError(""); // Clear previous errors
             }}
           />
         ))}
       </div>
-      {error && <p style={{ color: "red", margin: "10px 0" }}>{error}</p>}
-      <button
-        onClick={handleSaveImage}
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          backgroundColor: "#0070f3",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
+      {error && <p className={styles.error}>{error}</p>}
+      <button className={styles.saveButton} onClick={handleSaveImage}>
         Save
       </button>
     </div>
@@ -105,6 +90,3 @@ const UserProfileCard: React.FC = () => {
 };
 
 export default UserProfileCard;
-
-
-

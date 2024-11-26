@@ -1,10 +1,11 @@
 import React from 'react';
-import UserProfileCard from './components/UserProfileCard';
+import UserProfilePage from './components/UserProfilePage';
+
 
 export default function Page() {
   return (
     <div>
-      <UserProfileCard />
+      <UserProfilePage />
     </div>
   );
 }

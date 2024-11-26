@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+.container {
+  padding: 20px;
+  text-align: center;
+  font-family: 'Jacques Francois', serif;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #4e4e4e;
+  margin-bottom: 20px;
+}
+
+.imageGrid {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  margin: 20px 0;
+}
+
+.profileImage {
+  width: 150px; /* Increased size */
+  height: 150px; /* Increased size */
+  border-radius: 50%;
+  border: 1px solid gray;
+  transition: transform 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+.profileImage:hover {
+  transform: scale(1.1);
+  border-color: #3f4f3881;
+}
+
+.profileImage.selected {
+  border: 3px solid #3f4f3881;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #725B45;
+    padding: 20px 0;
+    width: 10%;
+  }
+  
+  .navButton {
+    background: none;
+    border: none;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  .navIcon {
+    width: 60px;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+  }
+  
+  .homeButton {
+    position: absolute;
+    top: 20px; 
+    right: 20px;
+    background: none;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .homeIcon {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+  }
+
+.error {
+  color: red;
+  margin: 10px 0;
+}
+
+.saveButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3f4f3881;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.saveButton:hover {
+  background-color: #3f4f3881;
+  transform: scale(1.05);
+}
