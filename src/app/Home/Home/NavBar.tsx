@@ -1,13 +1,23 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import styles from "./HomePage.module.css";
 
 const NavBar: React.FC = () => {
-    const { data: session } = useSession(); // Get session data
+    const { data: session, status } = useSession(); // Get session data and status
     const router = useRouter();
+    const [userIcon, setUserIcon] = useState<string>("/images/user-icon.png"); // Default user icon
+
+    useEffect(() => {
+        // Check login status and manually set the user icon to '/waffle.png'
+        if (status === "authenticated") {
+            setUserIcon("/waffle.png"); // Change to '/waffle.png' for logged-in users
+        } else {
+            setUserIcon("/images/user-icon.png"); // Default for non-logged-in users
+        }
+    }, [status]); // Runs whenever the session status changes
 
     const handleUserClick = () => {
         router.push("/profile");
@@ -33,7 +43,7 @@ const NavBar: React.FC = () => {
         <nav className={styles.navBar}>
             <button onClick={handleUserClick} className={styles.navButton}>
                 <img
-                    src="/images/user-icon.png"
+                    src={userIcon} // Dynamically set user icon
                     alt="User Icon"
                     className={styles.navIcon}
                 />
@@ -46,7 +56,9 @@ const NavBar: React.FC = () => {
                 />
             </button>
             <button
-                onClick={handleCalenderClick} className={styles.navButton}>
+                onClick={handleCalenderClick}
+                className={styles.navButton}
+            >
                 <img
                     src="/images/calendar-icon.png"
                     alt="Calendar Icon"

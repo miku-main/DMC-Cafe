@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     const user = await User.findByIdAndUpdate(
       userId,
       { profilePicture },
-      { new: true }
+      { new: true } // Return the updated document
     );
 
     if (!user) {
@@ -32,10 +32,10 @@ export async function POST(req: Request) {
 
     console.log("Profile picture updated successfully:", user);
 
-    // Redirect to the profile folder
+    // Redirect to the home page
     return NextResponse.json({
       message: "Profile picture updated successfully!",
-      redirect: `/profile?userId=${user._id}`, // Include userId for rendering user-specific data
+      redirect: "/", // Redirect to the home page
     });
   } catch (error) {
     console.error("Error updating profile picture:", error);
