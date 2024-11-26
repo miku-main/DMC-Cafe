@@ -1,13 +1,9 @@
-/* Main container for the entire page */
-.homePage {
-    display: flex;
-    min-height: 100vh;
-    background-color: #b2c1ac; /* Light green background */
-  }
+
   /* Main container for the CreateAccountCard */
   .createAccountPage {
     display: flex;
     align-items: center; /* Center vertically */
+    background-color: #A4B494; 
     justify-content: center; /* Center horizontally */
     flex: 1; /* Take up remaining space in the homePage container */
     width: 100%;

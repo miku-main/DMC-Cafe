@@ -5,8 +5,6 @@ import { useSession } from "next-auth/react";
 import NavBar from "./NavBar";
 import HomeIcon from "./HomeIcon";
 import HeaderMessage from "./HeaderMessage";
-import CharacterIcons from "./CharacterIcons";
-import MainDescription from "./MainDescription";
 import styles from "./HomePage.module.css";
 
 const HomePage: React.FC = () => {
@@ -15,20 +13,25 @@ const HomePage: React.FC = () => {
     return (
         <div className={styles.homePage}>
             <HomeIcon />
-            <div className={styles.homePage}>
-                {/* No need to pass onLogout */}
+            <div className={styles.innerContainer}>
                 <NavBar />
                 <div className={styles.mainContent}>
                     <HeaderMessage />
-                    <CharacterIcons />
-                    <MainDescription />
                     {!session && (
-                        <button
-                            onClick={() => (window.location.href = "/login")}
-                            className={styles.loginButton}
-                        >
-                            Log in
-                        </button>
+                        <div className={styles.authButtons}>
+                            <button
+                                onClick={() => (window.location.href = "/login")}
+                                className={styles.loginButton}
+                            >
+                                Log in
+                            </button>
+                            <button
+                                onClick={() => (window.location.href = "/createAccount")}
+                                className={styles.createAccountButton}
+                            >
+                                Create Account
+                            </button>
+                        </div>
                     )}
                 </div>
             </div>
@@ -37,4 +40,3 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
-
