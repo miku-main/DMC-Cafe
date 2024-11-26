@@ -57,11 +57,6 @@ const Calendar: React.FC = () => {
   const renderDayView = () => (
     <div style={{ width: '1300px', height: '655px' }}> 
         <div className={style.dayViewContainer}>
-            {Array.from({ length: 16 }, (_, i) => (
-                <div key={i} className={style.dayHourRow}>
-                    {i % 12 === 0 ? 12 : i % 12}:00 {i < 12 ? 'AM' : 'PM'}
-                </div>
-            ))}
         </div>
     </div>
   );
@@ -126,8 +121,7 @@ const Calendar: React.FC = () => {
   };
 
   return (
-    <div className={styles.homePage}>
-      <div className={styles.mainContent}>
+    <div className={style.homePage}>
       <div className={styles.mainContent}>
       <div className="flex space-x-2 mb-4">
         <button
@@ -155,7 +149,6 @@ const Calendar: React.FC = () => {
           {renderContent()}
         </div>
       </div>
-    </div>
   );
 };
 

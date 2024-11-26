@@ -4,28 +4,25 @@
 
 /* Day View Container */
 .dayViewContainer {
-    display: grid;
-    grid-template-rows: repeat(24, 1fr); /* 24 rows for each hour */
-    grid-template-columns: 1fr; /* Ensures a single column */
-    border: 2px solid black; /* Outer border */
+    border: 2px solid black; 
     border-radius: 0.2rem;
-    background-color: #eee9e6;
-    width: 100%; /* Expands the container fully horizontally */
-    height: 100%; /* Expands to fit the parent container vertically */
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%; 
+    height: 100%; 
 }
 
 /* Hour Row */
 .dayHourRow {
     font-family: 'Jacques Francois', monospace;
-    border-bottom: 1px solid black; /* Bold row borders */
+    border-bottom: 1px solid black; 
     display: flex;
     align-items: center;
-    justify-content: left; /* Align text to the left */
+    justify-content: left; 
     padding: 0.5rem;
-    font-size: 1rem; /* Adjust font size for clarity */
-    height: auto; /* Stretch to fit */
-    color: black; /* Dark gray text */
-    background-color: #eee9e6; /* Light background for contrast */
+    font-size: 1rem; 
+    height: auto; 
+    color: black; 
+    background-color: #eee9e6; 
 }
 
 /* Remove the border from the last row */
@@ -33,24 +30,22 @@
     border-bottom: none;
 }
 
-
-
 /* Week View Container */
 .weekViewContainer {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 equal columns for each day */
-    grid-template-rows: auto 1fr; /* Header row followed by content rows */
-    width: 100%; /* Stretch to full width */
-    height: 100%; /* Stretch to full height */
-    border: 2px solid black; /* Outer border */
-    border-radius: 0.2rem; /* Rounded corners */
+    grid-template-columns: repeat(7, 1fr); 
+    grid-template-rows: auto 1fr; 
+    width: 100%; 
+    height: 100%; 
+    border: 2px solid black; 
+    border-radius: 0.2rem; 
     background-color: #eee9e6;
 }
 
 /* Week Header Cells */
 .weekDayHeader {
     font-family: 'Jacques Francois', monospace;
-    border-bottom: 1.5px solid black; /* Horizontal line between header and grid */
+    border-bottom: 1.5px solid black; 
     text-align: center;
     font-weight: bold;
     padding: 0.5rem;
@@ -60,7 +55,7 @@
 /* Week Day Cells */
 .weekDayCell {
     
-    border-right: 1.5px solid black; /* Vertical lines between columns */
+    border-right: 1.5px solid black; 
     padding: 1rem;
     text-align: center;
     font-size: 0.9rem;
@@ -76,12 +71,12 @@
 /* Month View Container */
 .monthViewContainer {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 equal-width columns */
-    grid-auto-rows: 1fr; /* Rows adjust dynamically */
-    gap: 0; /* No space between cells */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    border: 2.5px solid black; /* Outer border */
+    grid-template-columns: repeat(7, 1fr); 
+    grid-auto-rows: 1fr; 
+    gap: 0; 
+    width: 100%; 
+    height: 100%; 
+    border: 2.5px solid black; 
     border-radius: 0rem;
     background-color: #eee9e6;
 }
@@ -89,7 +84,7 @@
 /* Header Cell (Day Names) */
 .monthDayHeader {
     font-family: 'Jacques Francois', monospace;
-    border-bottom: 1.5px solid black; /* Horizontal line between header and cells */
+    border-bottom: 1.5px solid black; 
     text-align: center;
     font-weight: bold;
     padding: 0.7rem;
@@ -101,7 +96,7 @@
 /* Day Cell (Dates) */
 .monthDayCell {
     font-family: 'Jacques Francois', monospace;
-    border: 1.5px solid black; /* Borders around each cell */
+    border: 1.5px solid black; 
     text-align: center;
     font-size: 0.9rem;
     background-color: #eee9e6;
@@ -110,7 +105,7 @@
 
 /* Empty cells (before the first day of the month) */
 .emptyCell {
-    border: 1.5px solid black; /* Empty cells still maintain borders */
+    border: 1.5px solid black; 
     background-color: #eee9e6;
 }
 
@@ -122,36 +117,36 @@
     align-items: center;
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
-    background-color: #e9e5e3; /* Dark background for the header */
+    background-color: #e9e5e3; 
     border-radius: 0.5rem;
 }
 
 /* Header Button */
 .headerButton {
-    font-size: 2rem; /* Larger font for navigation buttons */
+    font-size: 2rem; 
     padding: 0.5rem;
     color: black;
-    background-color: transparent; /* No background for buttons */
+    background-color: transparent; 
     border: none;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .headerButton:hover {
-    color: white; /* Slightly lighter color on hover */
+    color: white; 
 }
 
 /* Header Title Container */
 .headerTitleContainer {
     display: flex;
     align-items: center;
-    gap: 1rem; /* Space between title and additional elements */
+    gap: 1rem; 
 }
 
 /* Header Title */
 .headerTitle {
     font-family: 'Jacques Francois', monospace;
-    font-size: 1.25rem; /* Slightly larger font */
+    font-size: 1.25rem; 
     font-weight: bold;
     color: black;
 }
@@ -159,37 +154,37 @@
 /* Button Container */
 .buttonContainer {
     display: flex;
-    justify-content: space-around; /* Space between buttons */
+    justify-content: space-around; 
     align-items: center;
-    background-color: #7C9B70; /* Green background */
-    padding: 0.5rem 1rem; /* Padding around the buttons */
-    border-radius: 1rem; /* Rounded container corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    background-color: #7C9B70; 
+    padding: 0.5rem 1rem; 
+    border-radius: 1rem; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
 }
 
 /* Shared button styles */
 .calendarButton {
     font-family: 'Jacques Francois', monospace;
-    padding: 0.5rem 1.5rem; /* Button padding for size */
-    background-color: #eee9e6; /* Neutral background */
+    padding: 0.5rem 1.5rem; 
+    background-color: #eee9e6; 
     color: black;
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
-    border-radius: 0.5rem; /* Rounded button corners */
-    border: 1px solid #ccc; /* Light border */
+    border-radius: 0.5rem; 
+    border: 1px solid #ccc; 
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 /* Hover effect */
 .calendarButton:hover {
-    background-color: #e0e0e0; /* Slightly darker background on hover */
+    background-color: #e0e0e0; 
 }
 
 /* Active button styles */
 .calendarButtonActive {
-    background-color: #7C9B70; /* Match container background */
+    background-color: #7C9B70; 
     color: white;
-    border: 1px solid #5c7b55; /* Slightly darker border */
+    border: 1px solid #5c7b55;
 }

@@ -6,12 +6,12 @@ import HomeIcon from '../Home/Home/HomeIcon'
 
 export default function Page() {
   return (
-    <div className={styles.homePage}>
-      <NavBar />
-      <HomeIcon />
-      <div>
+    <>
+      <div className={styles.homePage}>
+        <NavBar />
+        <HomeIcon />
         <Calender />
       </div>
-    </div>
+    </>
   );
 }
