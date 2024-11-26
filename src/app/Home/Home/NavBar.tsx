@@ -46,9 +46,7 @@ const NavBar: React.FC = () => {
                 />
             </button>
             <button
-                onClick={handleCalenderClick}
-                className={styles.navButton}
-            >
+                onClick={handleCalenderClick} className={styles.navButton}>
                 <img
                     src="/images/calendar-icon.png"
                     alt="Calendar Icon"
