@@ -56,8 +56,6 @@ function Home() {
             }
         } catch (error) {
             console.error("Error adding task:", error);
-        } finally {
-            setShowForm(false);
         }
     };
 
