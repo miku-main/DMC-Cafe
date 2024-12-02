@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectMongo from "../../../utils/connectMongo";
 import User from "../../../models/UserSchema";
+import mongoose from "mongoose";
 
 export async function POST(req: Request) {
   try {
@@ -16,11 +17,19 @@ export async function POST(req: Request) {
       );
     }
 
+    // Convert userId to ObjectId if necessary
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return NextResponse.json(
+        { error: "Invalid userId format." },
+        { status: 400 }
+      );
+    }
+
     await connectMongo();
     console.log("MongoDB connected.");
 
     const user = await User.findByIdAndUpdate(
-      userId,
+      userId, // userId should now be a valid ObjectId
       { profilePicture },
       { new: true } // Return the updated document
     );
@@ -32,7 +41,6 @@ export async function POST(req: Request) {
 
     console.log("Profile picture updated successfully:", user);
 
-    // Redirect to the home page
     return NextResponse.json({
       message: "Profile picture updated successfully!",
       redirect: "/", // Redirect to the home page

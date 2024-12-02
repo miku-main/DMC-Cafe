@@ -9,7 +9,7 @@ interface IUser extends mongoose.Document {
 const UserSchema: Schema<IUser> = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  profilePicture: { type: String, default: null }, // Add the profilePicture field
+  profilePicture: { type: String, default: "/images/user-icon.png" },
 });
 
 const User = mongoose.models.User || model<IUser>("User", UserSchema);

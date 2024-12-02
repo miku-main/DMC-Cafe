@@ -11,16 +11,22 @@ const NavBar: React.FC = () => {
     const [userIcon, setUserIcon] = useState<string>("/images/user-icon.png"); // Default user icon
 
     useEffect(() => {
-        // Check login status and manually set the user icon to '/waffle.png'
-        if (status === "authenticated") {
-            setUserIcon("/waffle.png"); // Change to '/waffle.png' for logged-in users
+        console.log("Session data:", session);  // Check if image is being passed correctly
+        if (status === "authenticated" && session?.user?.image) {
+            console.log("User image found:", session.user.image);  // Debugging log
+            setUserIcon(session.user.image); // Use profile picture from session
         } else {
-            setUserIcon("/images/user-icon.png"); // Default for non-logged-in users
+            console.log("No user image, using default icon");  // Debugging log
+            setUserIcon("/images/user-icon.png"); // Default icon
         }
-    }, [status]); // Runs whenever the session status changes
+    }, [status, session]);  // Ensure this effect runs when session or status changes
 
     const handleUserClick = () => {
-        router.push("/profile");
+        if (status === "authenticated") {
+            router.push("/userProfile"); // Navigate to profile page
+        } else {
+            router.push("/profile"); // Navigate to login/create account page
+        }
     };
 
     const handleTimerClick = () => {
